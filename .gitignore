@@ -1,0 +1,16 @@
+/target
+.cljs_rhino_repl/
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
+.repl
+.idea/
+.DS_Store
+*.iml
+.lein-failures
+.lein-repl-history
