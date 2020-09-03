@@ -290,10 +290,12 @@
         matches (set (flows-matching-by-Entry-nodes engine flows event))]
     (when (seq matches)
       (callback! engine :wf.callback/matched-flows {:wf/event event
+                                                    :wf/active-flows active-flows
                                                     :wf/matching-flows matches}))
     (loop [matches* matches]
       (if (empty? matches*)
-        (callback! engine :wf.callback/event-unmatched {:wf/event event})
+        (callback! engine :wf.callback/event-unmatched {:wf/event event
+                                                        :wf/active-flows active-flows})
         (let [context-id (generate-context-id)
               [matching-flow init-node-id :as match]
               (elect-flow engine matches* event context-id)
@@ -310,7 +312,8 @@
             (= ::reelect result)
             (recur (disj matches* match))
             (= ::unmatched result)
-            (callback! engine :wf.callback/event-unmatched {:wf/event event})))))))
+            (callback! engine :wf.callback/event-unmatched {:wf/event event
+                                                            :wf/active-flows active-flows})))))))
 
 (defn- get-interrupted-contexts-with-flows
   [engine context-key]
