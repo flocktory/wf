@@ -1,4 +1,4 @@
-(defproject com.flocktory/wf "0.1.0"
+(defproject com.flocktory/wf "0.2.0"
   :description "Reactive workflow engine scaffold"
   :url "https://github.com/flocktory/wf"
   :license {:name "Eclipse Public License"
